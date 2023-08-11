@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt_br" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	    <meta charset="utf-8"/>
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    	<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+	    <link rel="stylesheet" href="css/puc.css"/>
+		<script src="https://kit.fontawesome.com/59d868f5b6.js" crossorigin="anonymous"></script>		
+		<title>TCC - Caio Augustinho</title>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<h1 class="text-center"><u>BoxQRG</u></h1>
+			<div class="navegadorSuperior">
+				<a class="active"><i class="fas fa-user-cog"></i> <u>Área do Empregado(a) : Lista de Alunos</u></a>
+				<div class="navegadorSuperior-right">
+					<a href="/FormulariodeCadastroAluno"><i class="fas fa-user-edit"></i> Cadastrar Novo Aluno(a)</a>
+					<a href="/"><i class="fas fa-home"></i> Retornar ao Início</a>
+				</div>
+			</div>
+		
+			<br>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nome</th>
+						<th>CPF</th>
+						<th>Endereco</th>
+						<th>Ações</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr	th:each="aluno: ${listadeAlunos}">
+						<td th:text="${aluno.id}">ID</td>
+						<td th:text="${aluno.nome}">Nome</td>
+						<td th:text="${aluno.cpf}">CPF</td>
+						<td th:text="${aluno.endereco}">Endereco</td>
+						<td><a th:href="@{/listarPresencasAluno(id=${aluno.id})}"> Visualizar Estatisticas de Presença</a></td>
+					</tr>
+				</tbody>
+			</table>
+			<footer>
+				<p class="text-muted"></p>
+			</footer>
+		</div>		
+	</body>
+</html>
